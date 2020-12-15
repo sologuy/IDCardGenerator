@@ -1,22 +1,23 @@
 const idcardGenerator = require('./index');
 const fs = require('fs');
 const path = require('path');
+const yy = Math.floor(Math.random()*100);
 const config = {
-    name: '刘强东',
-    sex: '女',
+    name: '刘浩然',
+    sex: '男',
     nation: '汉',
-    year: '2002',
-    mon: '2',
+    year: '19' + yy,
+    mon: '02',
     day: '03',
-    org: '喵喵县公安局',
-    validTerm: '2014.01.27-2019.01.27',
-    addr: '喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵',
-    idn: '371100197308161831',
+    org: '上海市公安局',
+    validTerm: '2020.01.27-2040.01.27',
+    addr: '上海市浦东新区新金桥大厦',
+    idn: '31010019' + yy + '02031831',
     avatar: './images/avatar.png'
 }
-
+config.name = config.name + Math.floor(Math.random()*1000);
 idcardGenerator(config).then(e => {
-    fs.writeFile('./output.png', e, err => {
+    fs.writeFile('./' + config.idn + '.png', e, err => {
         if(err){
             console.log('idcard-generator：测试失败 ' + e);
         } else {
